@@ -4,8 +4,6 @@ import { useRef, useState } from "react";
 export default function Form({ data }) {
   const [from, setFrom] = useState();
   const [to, setTo] = useState();
-  //   const fromRef = useRef();
-  //   const toRef = useRef();
 
   const handleChangeFrom = (e) => {
     setFrom(e.target.value);
