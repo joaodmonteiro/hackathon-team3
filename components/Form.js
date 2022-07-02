@@ -1,26 +1,31 @@
-export default function Form() {
-  async function submitHandler(e) {
-    e.preventDefault();
+import Link from "next/link";
+import { useRef, useState } from "react";
 
-    const resp = await fetch(
-      `https://maps.googleapis.com/maps/api/directions/json?origin=london&destination=leeds&mode=transit&key=${process.env.REACT_APP_GOOGLE_MAPS_API}`
-    );
+export default function Form({ data }) {
+  const [from, setFrom] = useState();
+  const [to, setTo] = useState();
+  //   const fromRef = useRef();
+  //   const toRef = useRef();
 
-    const data = await resp.json();
-    console.log(data.routes);
-  }
+  const handleChangeFrom = (e) => {
+    setFrom(e.target.value);
+  };
+  const handleChangeTo = (e) => {
+    setTo(e.target.value);
+  };
 
   return (
     <div>
-      <form action="" onSubmit={submitHandler}>
+      <form action="">
         <div>From: </div>
-        <input type="text" />
+        <input onChange={handleChangeFrom} type="text" />
         <div>To: </div>
-        <input type="text" />
-        <input type="submit" />
+        <input onChange={handleChangeTo} type="text" />
+        <Link href={`/${from}&${to}`}>
+          <button>Submit</button>
+        </Link>
       </form>
+      <div>{data}</div>
     </div>
   );
 }
-
-export async function getServerSideProps() {}
