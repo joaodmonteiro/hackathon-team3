@@ -1,5 +1,4 @@
 export default function SecondPage({ data }) {
-  console.log(data)
   return <div></div>;
 }
 
