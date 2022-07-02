@@ -12,7 +12,7 @@ export async function getServerSideProps() {
   );
 
   const data = await resp.json();
-  console.log(data);
+  console.log(data.routes);
 
   return {
     props: {},
