@@ -138,5 +138,3 @@ export default function Form({ data }) {
     </div>
   );
 }
-
-// maps.googleapis.com/maps/api/js?key=AIzaSyArfnT6ldB6HunVSN0_dmZHlaI4BFX5aUY&libraries=places"
