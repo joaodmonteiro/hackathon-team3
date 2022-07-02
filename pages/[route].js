@@ -1,8 +1,22 @@
+import Link from "next/link";
+import { useState } from "react";
+
 export default function SecondPage({ distance, unit }) {
+  const transport = {
+    train: "passenger_train-route_type_underground-fuel_source_na",
+    bus: "passenger_vehicle-vehicle_type_local_bus-fuel_source_na-distance_na-engine_size_na",
+    car: "passenger_vehicle-vehicle_type_black_cab-fuel_source_na-distance_na-engine_size_na",
+  };
+
+  const [transportMethod, setTransportMethod] = useState(transport.train);
+
   return (
     <div>
-      {distance}
+      Distance: {distance}
       {unit}
+      <Link href={`/results/${distance}&${transportMethod}`}>
+        GET EMISSIONS DATA
+      </Link>
     </div>
   );
 }
