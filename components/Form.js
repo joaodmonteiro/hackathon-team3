@@ -43,8 +43,7 @@ export default function Form({ data }) {
 
     // to show direction on the map
     setDirectionsresponse(results.drivingResults);
-
-    // sets the  states for all the modes of transport 
+    // sets the  states for all the modes of transport
     setDrivingDistance(results.drivingResults.routes[0].legs[0].distance.text);
     setDrivingDuration(results.drivingResults.routes[0].legs[0].duration.text);
     setBycicleDistance(results.bycicleResults.routes[0].legs[0].distance.text);
