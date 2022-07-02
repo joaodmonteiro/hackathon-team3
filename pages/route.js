@@ -1,7 +1,7 @@
 import React from "react";
 import { ImageInput } from "../components/imageInput";
 
-const Route = () => {
+export default function Route() {
   return (
     <>
       <ImageInput
@@ -26,5 +26,4 @@ const Route = () => {
       />
     </>
   );
-};
-export default Route;
+}
