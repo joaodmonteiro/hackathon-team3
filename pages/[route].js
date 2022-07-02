@@ -1,29 +1,38 @@
-export default function SecondPage({ data }) {
-  console.log(data)
-  return <div></div>;
+export default function SecondPage({ distance, unit }) {
+  return (
+    <div>
+      {distance}
+      {unit}
+    </div>
+  );
 }
 
 export async function getServerSideProps(context) {
-  const location = context.params.route.split("&");
+  let distanceAmount = 0;
+  let unit = "km";
+  if (context.params.route != "favicon.ico") {
+    const location = context.params.route.split("&");
 
-  const from = location[0];
-  const to = location[1];
+    const fromLocation = location[0].split(" ").join("+");
+    const toLocation = location[1].split(" ").join("+");
 
-  const resp = await fetch(
-    `https://maps.googleapis.com/maps/api/directions/json?origin=${from}&destination=${to}&key=${process.env.REACT_APP_GOOGLE_MAPS_API}`
-  );
+    const resp = await fetch(
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${fromLocation}&destination=${toLocation}&mode=transit&key=${process.env.REACT_APP_GOOGLE_MAPS_API}`
+    );
 
-  const data = await resp.json();
+    const data = await resp.json();
 
-  const distance = data.routes[0].legs[0].distance.text.split(" ");
+    if (data.status === "OK") {
+      const distance = data.routes[0].legs[0].distance.text.split(" ");
 
-  const [distanceAmount, unit] = distance;
-
-  console.log(data.routes[0].legs[0].steps);
+      [distanceAmount, unit] = distance;
+    }
+  }
 
   return {
     props: {
-      data: data,
+      distance: distanceAmount,
+      unit: unit,
     },
   };
 }
