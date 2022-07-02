@@ -1,5 +1,6 @@
 export default function SecondPage({ data }) {
-  return <div>{data.routes[0].copyrights}</div>;
+  console.log(data)
+  return <div></div>;
 }
 
 export async function getServerSideProps(context) {
