@@ -11,7 +11,7 @@ export async function getServerSideProps(context) {
   const resp = await fetch("https://beta3.api.climatiq.io/estimate", {
     method: "POST",
     headers: {
-      Authorization: "Bearer 8DZR6RT9NYM6ZVG3AWRB8T8EVQE0",
+      Authorization: `Bearer ${process.env.REACT_APP_CLIMATIQ_API}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
