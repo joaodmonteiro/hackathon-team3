@@ -15,7 +15,7 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
     setDistance(e.target.value);
   };
   const handleSubmit = () => {
-    router.push(`/results/${distance}`);
+    router.push(`/results/${distance}&${timesAWeek}`);
   };
   return (
     <div>

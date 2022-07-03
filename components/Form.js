@@ -11,8 +11,6 @@ export default function Form({ data }) {
 
   const router = useRouter();
 
-
-
   // loads your ApiKey into the googleMaps Api.
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KAZ,
@@ -28,7 +26,7 @@ export default function Form({ data }) {
 
     router.push(`/${originRef.current.value}&${destinationRef.current.value}`);
   };
-
+  const na = "kk";
   return (
     <div>
       <form action="" onSubmit={handleSubmit}>
