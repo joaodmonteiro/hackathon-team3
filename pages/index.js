@@ -12,8 +12,10 @@ export default function Home() {
   );
 }
 
-export async function getServerSideProps() {
-  return {
-    props: {},
-  };
-}
+// export async function getStaticPaths() {
+//   // Return a list of possible value for id
+// }
+
+// export async function getStaticProps({ params }) {
+//   // Fetch necessary data for the blog post using params.id
+// }
