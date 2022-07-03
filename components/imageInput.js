@@ -1,11 +1,20 @@
 import React from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Center } from "@chakra-ui/react";
 
-export const ImageInput = ({ src, alt, id }) => {
+export const ImageInput = ({ src, alt, id, value, onClick }) => {
   return (
     <>
-      <Box w={{ base: "200px", sm: "250px", md: "300px" }} h="auto">
-        <input type="image" src={src} id={id} alt={alt} />
+      <Box px="1em" py="1em" border={"solid 1px #E7E7E7"} borderRadius="12px">
+        <Center w="100px" h="100px">
+          <input
+            type="image"
+            src={src}
+            id={id}
+            alt={alt}
+            value={value}
+            onClick={onClick}
+          />
+        </Center>
       </Box>
     </>
   );

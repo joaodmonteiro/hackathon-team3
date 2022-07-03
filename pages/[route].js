@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import fetchRoutes from "../hooks/fetchHook";
+import { ImageInput } from "../components/imageInput";
 import { useRouter } from "next/router";
+import { Flex, Box, Center, Button } from "@chakra-ui/react";
 
 export default function ClimateDetails({ driving, walking, transit, bicycle }) {
   const sliderRef = useRef();
@@ -18,8 +20,75 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
     router.push(`/results/${distance}&${timesAWeek}`);
   };
   return (
-    <div>
-      <div>
+    <>
+      <Flex
+        flexDirection="column"
+        my="3em"
+        mx="1em"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Flex flexDirection="row">
+          <Box my="1em" mx=".5em">
+            <p>
+              {" "}
+              bicycle
+              {bicycle.distance}, {bicycle.duration}
+            </p>
+            <ImageInput
+              src={"https://svgshare.com/i/ike.svg"}
+              id={"bike"}
+              alt={"bike"}
+              value={`${transit.distance}&${transit.mode}`}
+              onClick={handleClick}
+            />
+          </Box>
+          <Box my="1em" mx=".5em">
+            <p>
+              transit
+              {transit.distance}, {transit.duration}
+            </p>
+            <ImageInput
+              src={"https://svgshare.com/i/img.svg"}
+              id={"train"}
+              alt={"train"}
+              value={`${transit.distance}&${transit.mode}`}
+              onClick={handleClick}
+            />
+          </Box>
+        </Flex>
+        <Flex Flex flexDirection="row">
+          <Box my="1em" mx=".5em">
+            <p>
+              {" "}
+              {driving.distance}, {driving.duration}
+            </p>
+            <ImageInput
+              src={"https://svgshare.com/i/ikf.svg"}
+              id={"car"}
+              alt={"car"}
+              value={`${driving.distance}&${driving.mode}`}
+              onClick={handleClick}
+            />
+          </Box>
+          <Box my="1em" mx=".5em">
+            <p>
+              {" "}
+              walking
+              {walking.distance}, {walking.duration}
+            </p>
+            <ImageInput
+              src={"https://svgshare.com/i/ikk.svg"}
+              id={"walking"}
+              alt={"walking"}
+              value={`${walking.distance}&${walking.mode}`}
+              onClick={handleClick}
+            />
+          </Box>
+        </Flex>
+      </Flex>
+      {/* <div>
+        driving
         {driving.distance}, {driving.duration}
         <input
           type="radio"
@@ -30,6 +99,7 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
         />
       </div>
       <div>
+        walking
         {walking.distance}, {walking.duration}
         <input
           type="radio"
@@ -40,6 +110,7 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
         />
       </div>
       <div>
+        transit
         {transit.distance}, {transit.duration}
         <input
           type="radio"
@@ -50,6 +121,7 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
         />
       </div>
       <div>
+        bicycle
         {bicycle.distance}, {bicycle.duration}
         <input
           type="radio"
@@ -58,20 +130,25 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
           data-mode="bicycle"
           onClick={handleClick}
         />
-      </div>
-      <input
-        ref={sliderRef}
-        type="range"
-        min="1"
-        max="7"
-        step="1"
-        onChange={handleChange}
-        value={timesAWeek}
-      />
-
-      <div>{timesAWeek} days </div>
-      <button onClick={handleSubmit}>Submit</button>
-    </div>
+      </div> */}
+      <Center>
+        <input
+          ref={sliderRef}
+          type="range"
+          min="1"
+          max="7"
+          step="1"
+          onChange={handleChange}
+          value={timesAWeek}
+        />
+      </Center>
+      <Center>
+        <div>{timesAWeek} days </div>
+      </Center>
+      <Center>
+        <Button onClick={handleSubmit}>Submit</Button>
+      </Center>
+    </>
   );
 }
 
