@@ -54,7 +54,11 @@ export default function Results({ co2e, timesWeek }) {
               <Text fontSize="3em">{weeklyEmission}%</Text>
             </Box>
             <Box display="flex" flexDirection="column" justifyContent="center">
-              <Text style={{ color: "white" }}>Some text goes here</Text>
+              <Text style={{ color: "white", paddingRight: "2" }}>
+                The average carbon footprint per person in the UK, per year, is
+                12.7 tonnes of CO2e! This journey will emit {weeklyEmission}% of
+                the average daily carbon footprint!
+              </Text>
             </Box>
           </div>
         </Flex>
@@ -63,6 +67,7 @@ export default function Results({ co2e, timesWeek }) {
             <Flex
               w="100%"
               flexDirection="row"
+              p="1em"
               h={{ base: "9em", sm: "15em", md: "20em" }}
             >
               <Image
@@ -88,20 +93,27 @@ export default function Results({ co2e, timesWeek }) {
               flexDirection="row"
               h={{ base: "9em", sm: "15em", md: "20em" }}
             >
-              <div style={{ display: "flex" }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100%",
+                }}
+              >
                 <Box
                   w="100%"
                   borderRadius="12px"
                   display="flex"
                   alignItems="center"
                   paddingTop="8"
-                  paddingLeft="8"
+                  paddingLeft="10"
                   fontSize="14"
                 >
+                  <br />
                   Did you know that to produce 100g of protein, beef production
                   emits around 50kg of green house gas emissions? Following this
-                  fact, your journey is same amount of {steakToFixed}{" "}
-                  steaks(100g) in a year.
+                  fact, your commuting in a year is the same as the emissions of{" "}
+                  {steakToFixed} steaks(100g).
                 </Box>
                 <Image
                   w="70%"
@@ -117,6 +129,7 @@ export default function Results({ co2e, timesWeek }) {
               w="100%"
               alignItems="center"
               flexDirection="row"
+              p="1em"
               h={{ base: "9em", sm: "15em", md: "20em" }}
             >
               <Image
@@ -131,7 +144,8 @@ export default function Results({ co2e, timesWeek }) {
                 display="flex"
                 alignItems="center"
               >
-                That is same as like {bottle} plastic water bottles! (500ml)
+                That is the same as producing {bottle.toFixed()} plastic water
+                bottles! (500ml)
               </Box>
             </Flex>
           </div>

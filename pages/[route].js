@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import fetchRoutes from "../hooks/fetchHook";
 import { ImageInput } from "../components/imageInput";
 import { useRouter } from "next/router";
-import { Heading, Flex, Box, Center, Button, Image,Text } from "@chakra-ui/react";
+import { Heading, Flex, Box, Center, Button, Text } from "@chakra-ui/react";
 
 export default function ClimateDetails({ driving, walking, transit, bicycle }) {
   const sliderRef = useRef();
@@ -45,133 +45,91 @@ export default function ClimateDetails({ driving, walking, transit, bicycle }) {
       >
         travel carbon footprint calculator
       </Text>
-      <Flex
-        flexDirection="column"
-        my="3em"
-        mx="1em"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Flex flexDirection="row">
-          <Box my="1em" mx=".5em">
-            <p>
-              {" "}
-              bicycle
-              {bicycle.distance}, {bicycle.duration}
-            </p>
-            <ImageInput
-              src={"https://svgshare.com/i/ike.svg"}
-              id={"bike"}
-              alt={"bike"}
-              value={`${transit.distance}&${transit.mode}`}
-              onClick={handleClick}
+      {resultBoolean ? (
+        <div>You are doing well</div>
+      ) : (
+        <div>
+          <Flex
+            flexDirection="column"
+            my="3em"
+            mx="1em"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Flex flexDirection="row">
+              <Box my="1em" mx=".5em">
+                <p>{bicycle.distance}</p>
+                <p>{bicycle.duration}</p>
+                <ImageInput
+                  src={"https://svgshare.com/i/ike.svg"}
+                  id={"bike"}
+                  alt={"bike"}
+                  value={`${transit.distance}&${transit.mode}`}
+                  onClick={handleClick}
+                />
+              </Box>
+              <Box my="1em" mx=".5em">
+                <p>{transit.distance}</p>
+                <p> {transit.duration}</p>
+                <ImageInput
+                  src={"https://svgshare.com/i/img.svg"}
+                  id={"train"}
+                  alt={"train"}
+                  value={`${transit.distance}&${transit.mode}`}
+                  onClick={handleClick}
+                />
+              </Box>
+            </Flex>
+            <Flex Flex flexDirection="row">
+              <Box my="1em" mx=".5em">
+                <p>
+                  {driving.distance}
+                  <p>{driving.duration}</p>
+                </p>
+                <ImageInput
+                  src={"https://svgshare.com/i/ikf.svg"}
+                  id={"car"}
+                  alt={"car"}
+                  value={`${driving.distance}&${driving.mode}`}
+                  onClick={handleClick}
+                />
+              </Box>
+              <Box my="1em" mx=".5em">
+                <p>{walking.distance}</p>
+                <p> {walking.duration}</p>
+                <ImageInput
+                  src={"https://svgshare.com/i/ikk.svg"}
+                  id={"walking"}
+                  alt={"walking"}
+                  value={`${walking.distance}&${walking.mode}`}
+                  onClick={handleClick}
+                />
+              </Box>
+            </Flex>
+          </Flex>
+
+          <div style={{ textAlign: "center" }}>
+            <p sty>How many times a week do you commute?</p>
+          </div>
+          <Center>
+            <input
+              ref={sliderRef}
+              type="range"
+              min="1"
+              max="7"
+              step="1"
+              onChange={handleChange}
+              value={timesAWeek}
             />
-          </Box>
-          <Box my="1em" mx=".5em">
-            <p>
-              transit
-              {transit.distance}, {transit.duration}
-            </p>
-            <ImageInput
-              src={"https://svgshare.com/i/img.svg"}
-              id={"train"}
-              alt={"train"}
-              value={`${transit.distance}&${transit.mode}`}
-              onClick={handleClick}
-            />
-          </Box>
-        </Flex>
-        <Flex Flex flexDirection="row">
-          <Box my="1em" mx=".5em">
-            <p>
-              {" "}
-              {driving.distance}, {driving.duration}
-            </p>
-            <ImageInput
-              src={"https://svgshare.com/i/ikf.svg"}
-              id={"car"}
-              alt={"car"}
-              value={`${driving.distance}&${driving.mode}`}
-              onClick={handleClick}
-            />
-          </Box>
-          <Box my="1em" mx=".5em">
-            <p>
-              {" "}
-              walking
-              {walking.distance}, {walking.duration}
-            </p>
-            <ImageInput
-              src={"https://svgshare.com/i/ikk.svg"}
-              id={"walking"}
-              alt={"walking"}
-              value={`${walking.distance}&${walking.mode}`}
-              onClick={handleClick}
-            />
-          </Box>
-        </Flex>
-      </Flex>
-      {/* <div>
-        driving
-        {driving.distance}, {driving.duration}
-        <input
-          type="radio"
-          name="mode"
-          value={`${driving.distance}&${driving.mode}`}
-          data-mode="bicycle"
-          onClick={handleClick}
-        />
-      </div>
-      <div>
-        walking
-        {walking.distance}, {walking.duration}
-        <input
-          type="radio"
-          name="mode"
-          value={`${walking.distance}&${walking.mode}`}
-          data-mode="bicycle"
-          onClick={handleClick}
-        />
-      </div>
-      <div>
-        transit
-        {transit.distance}, {transit.duration}
-        <input
-          type="radio"
-          name="mode"
-          value={`${transit.distance}&${transit.mode}`}
-          data-mode="bicycle"
-          onClick={handleClick}
-        />
-      </div>
-      <div>
-        bicycle
-        {bicycle.distance}, {bicycle.duration}
-        <input
-          type="radio"
-          name="mode"
-          value={`${bicycle.distance}&${bicycle.mode}`}
-          data-mode="bicycle"
-          onClick={handleClick}
-        />
-      </div> */}
-      <Center>
-        <input
-          ref={sliderRef}
-          type="range"
-          min="1"
-          max="7"
-          step="1"
-          onChange={handleChange}
-          value={timesAWeek}
-        />
-      </Center>
-      <Center>
-        <div>{timesAWeek} days </div>
-      </Center>
-      <Center>
-        <Button onClick={handleSubmit}>Submit</Button>
-      </Center>
+          </Center>
+          <Center>
+            <div>{timesAWeek} days </div>
+          </Center>
+          <Center>
+            <Button onClick={handleSubmit}>Submit</Button>
+          </Center>
+        </div>
+      )}
     </>
   );
 }
