@@ -4,6 +4,7 @@ import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
 import { useRouter } from "next/router";
 import calculateRoute from "../hooks/calculateRoute";
 export default function Form({ data }) {
+  // console.log(process.env.GUI);
   const originRef = useRef();
   const destinationRef = useRef();
   const router = useRouter();
