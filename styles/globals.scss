@@ -1,0 +1,38 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input[type='text'] {
+  border: 2px solid white;
+  background-color: #165022;
+  border-radius: 9px;
+  height: 64px;
+  width: 100%;
+  padding: 1rem;
+  font-size: var(--fs-small);
+}
+
+:root {
+  --desktop-pad: 48px;
+  --mobile-pad: 24px;
+  --fs-big: 64px;
+  --fs-med: 32px;
+  --fs-small: 16px;
+}
+
+.pac-item * {
+  font-size: var(--fs-small);
+}
