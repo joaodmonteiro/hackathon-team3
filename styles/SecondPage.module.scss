@@ -1,0 +1,47 @@
+.container {
+    background-color: #165022;
+    color: white;
+    padding: var(--mobile-pad);
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h2 {
+        margin-top: 32px;
+    }
+
+    .transportOptions {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 32px;
+
+        .option {
+            border: 2px solid white;
+            border-radius: 6px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px;
+
+            img {
+                height: 2em;
+            }
+        }
+    }
+
+    input[type="range"] {
+        width: 100%;
+        margin-top: 32px;
+    }
+
+    .daysIndicator {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 8px 6px;
+    }
+}

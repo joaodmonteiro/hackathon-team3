@@ -164,8 +164,7 @@ export async function getServerSideProps(context) {
       "passenger_vehicle-vehicle_type_black_cab-fuel_source_na-distance_na-engine_size_na",
   };
   const info = context.params.slug.split("&");
-  const distance = +info[0].split(",")[0];
-  console.log(distance);
+  const distance = +info[0].replace(",", "");
   const transport = info[1];
   const timesAWeek = info[2];
   const climateTransport =
@@ -190,8 +189,6 @@ export async function getServerSideProps(context) {
   });
 
   const data = await resp.json();
-
-  console.log(data);
 
   return {
     props: {

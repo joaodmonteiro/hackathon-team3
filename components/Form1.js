@@ -19,7 +19,7 @@ export default function Form1({ data }) {
     if (e.cancelable) {
       e.preventDefault();
     }
-    const results = await calculateRoute(originRef, destinationRef);
+    // const results = await calculateRoute(originRef, destinationRef);
     router.push(`/${originRef.current.value}&${destinationRef.current.value}`);
   };
   const na = "kk";

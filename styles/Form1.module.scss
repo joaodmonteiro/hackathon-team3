@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     height: 100%;
 
@@ -12,6 +12,7 @@
         height: 100%;
         gap: 16px;
         width: 100%;
+        max-width: 600px;
 
         .form_label {
             font-size: var(--fs-med);
@@ -19,6 +20,7 @@
 
         .button {
             background-color: white;
+            border: none;
             color: #165022;
             height: 64px;
             border-radius: 9px;

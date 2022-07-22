@@ -1,12 +1,12 @@
 .container {
     height: 100vh;
     height: 100dvh;
-    background-color: #165022;
-    color: white;
     padding: var(--mobile-pad);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #165022;
+    color: white;
 
     h1 {
         font-size: var(--fs-big);
