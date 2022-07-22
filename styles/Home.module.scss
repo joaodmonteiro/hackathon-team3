@@ -9,12 +9,13 @@
     color: white;
 
     h1 {
-        font-size: var(--fs-big);
+        font-size: var(--fs-vbig);
     }
 
     h2 {
         width: 16ch;
         align-self: flex-end;
         text-align: end;
+        font-size: var(--fs-med);
     }
 }

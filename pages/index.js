@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Form1 from "../components/Form1";
+import ProgressBar from "../components/ProgressBar";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <h1>Greenergy</h1>
       <h2>The carbon footprint of your commuting</h2>
       <Form1 />
+      <ProgressBar state={1} />
     </div>
   );
 }

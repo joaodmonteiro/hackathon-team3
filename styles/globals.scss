@@ -30,8 +30,9 @@ input[type='text'] {
 :root {
   --desktop-pad: 48px;
   --mobile-pad: 24px;
-  --fs-big: 64px;
-  --fs-med: 32px;
+  --fs-vbig: 64px;
+  --fs-big: 32px;
+  --fs-med: 20px;
   --fs-small: 16px;
 }
 
@@ -45,7 +46,6 @@ button {
   color: #165022;
   height: 64px;
   border-radius: 9px;
-  margin-top: 64px;
   font-size: var(--fs-med);
   width: 100%;
 }

@@ -36,7 +36,6 @@ export default function Form1({ data }) {
         </Autocomplete>
         <input className={styles.button} type="submit" value="Next" />
       </form>
-      <div>{data}</div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { ImageInput } from "../components/imageInput";
 import { useRouter } from "next/router";
 import { Heading, Flex, Box, Center, Button, Text } from "@chakra-ui/react";
 import styles from "../styles/SecondPage.module.scss";
+import ProgressBar from "../components/ProgressBar";
 
 export default function ClimateDetails({ driving, transit, bicycle }) {
   const sliderRef = useRef();
@@ -16,7 +17,7 @@ export default function ClimateDetails({ driving, transit, bicycle }) {
   const handleChange = (e) => {
     setTimesAWeek(e.target.value);
   };
-  const handleClick = (mode) => {
+  const handleSelectRoute = (mode) => {
     setMode(mode);
   };
   const handleSubmit = () => {
@@ -34,56 +35,77 @@ export default function ClimateDetails({ driving, transit, bicycle }) {
         <div>You are doing well</div>
       ) : (
         <div className={styles.container}>
-          <h2>What mode of transportation do you use?</h2>
-          <div className={styles.transportOptions}>
-            <div
-              className={styles.option}
-              onClick={() => handleClick("driving")}
-            >
-              <img src={"car_icon.svg"} alt={"car"} />
-              <p>{driving.distance}</p>
-              <p>{driving.duration}</p>
-            </div>
-            <div
-              className={styles.option}
-              onClick={() => handleClick("transit")}
-            >
-              <img src={"train_icon.svg"} alt={"train"} />
-              <p>{transit.distance}</p>
-              <p> {transit.duration}</p>
-            </div>
-            <div
-              className={styles.option}
-              onClick={() => handleClick("bicycle")}
-            >
-              <img src={"bike_icon.svg"} alt={"bike"} />
-              <p>{bicycle.distance}</p>
-              <p>{bicycle.duration}</p>
-            </div>
-          </div>
-
           <div>
-            <h2>How many times a week do you commute?</h2>
-          </div>
-          <input
-            ref={sliderRef}
-            type="range"
-            min="1"
-            max="7"
-            step="1"
-            onChange={handleChange}
-            value={timesAWeek}
-          />
-          <div className={styles.daysIndicator}>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
+            <div className={styles.questions}>
+              <div className={styles.question}>
+                <h2>What mode of transportation do you use?</h2>
+                <div className={styles.transportOptions}>
+                  <div
+                    className={
+                      mode === "driving"
+                        ? `${styles.option} ${styles.selectedOption}`
+                        : `${styles.option}`
+                    }
+                    onClick={() => handleSelectRoute("driving")}
+                  >
+                    <img src={"car_icon.svg"} alt={"car"} />
+                    <p>{driving.distance} km</p>
+                    <p>{driving.duration}</p>
+                  </div>
+                  <div
+                    className={
+                      mode === "transit"
+                        ? `${styles.option} ${styles.selectedOption}`
+                        : `${styles.option}`
+                    }
+                    onClick={() => handleSelectRoute("transit")}
+                  >
+                    <img src={"train_icon.svg"} alt={"train"} />
+                    <p>{transit.distance} km</p>
+                    <p> {transit.duration}</p>
+                  </div>
+                  <div
+                    className={
+                      mode === "bicycle"
+                        ? `${styles.option} ${styles.selectedOption}`
+                        : `${styles.option}`
+                    }
+                    onClick={() => handleSelectRoute("bicycle")}
+                  >
+                    <img src={"bike_icon.svg"} alt={"bike"} />
+                    <p>{bicycle.distance} km</p>
+                    <p>{bicycle.duration}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.question}>
+                <h2>How many times a week do you commute?</h2>
+
+                <input
+                  ref={sliderRef}
+                  type="range"
+                  min="1"
+                  max="7"
+                  step="1"
+                  onChange={handleChange}
+                  value={timesAWeek}
+                />
+                <div className={styles.daysIndicator}>
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                  <div>6</div>
+                  <div>7</div>
+                </div>
+              </div>
+            </div>
           </div>
           <button onClick={handleSubmit}>Submit</button>
+
+          <ProgressBar state={2} />
         </div>
       )}
     </div>
